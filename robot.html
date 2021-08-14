@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Robot</title>
+
+    <style>
+    #canvas{
+        width: 640px
+        height: 500px
+        transition: background 100ms;
+      }
+      label{
+        color: #000
+      }
+      input{
+        position: relative;
+        display: block;
+      }
+      #moveTitle{
+      position: relative;
+      right: 10px;
+      top: 2px;
+      float:left;
+      }
+      #moveS{
+      position: relative;
+      right: 2px;
+      top: 2px;
+      }
+      #moveT{
+      position: relative;
+      top: -17px;
+      left: 170px;
+      }
+      #moveX{
+      position: relative;
+      top: -17px;
+      left: 145px;
+      }
+      
+      .group0 {
+        position: relative;
+        margin: auto;
+        left: 160px;
+        top: 10px;
+      }
+      .group1 {
+        position: relative;
+        margin: auto;
+        left: 10px;
+        top: 10px;
+      }
+      .group2 {
+        position: relative;
+        margin: auto;
+        left: 230px;
+        top: -104px;
+      }
+      .group3 {
+        position: relative;
+        margin: auto;
+        left: 450px;
+        top: -218px;
+      }
+      
+   </style>
+</head>
+<body onload="initGL()">
+  <h1>Robot</h1>
+  <h2>Catherine Finnegan</h2>
+    <canvas id=draw_surface width="640" height="500" style="border: 1px;">WebGL2 not supported!</canvas>
+  <div class="group0">
+    <div id="moveTitle" name="moveTitle">
+      <label for="moveTriangle">Scale Robot: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-100" max="1" step=".01" value="-6" id="move_vert" name="move_vert" ">
+    </div>
+    
+    <div id="moveT" name="moveT">
+      <input type="text" id="move_out" name="move_out" required minlength="1" maxlength="3" size="4" >
+    </div>
+  </div>
+  
+  <div class="group1">
+    <div id="moveTitle" name="moveTitle">
+      <label for="x1">Torso: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-360" max="360" step=".01" value="-20" id="x1_vert" name="x1_vert" ">
+    </div>
+    
+    <div id="moveX" name="moveX">
+      <input type="text" id="x1_out" name="x1_out" required minlength="1" maxlength="3" size="4" >
+    </div>
+    
+    <div id="moveTitle" name="moveTitle">
+      <label for="y1">Right Arm: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-45" max="45" step=".01" value="0" id="y1_vert" name="y1_vert">
+    </div>
+    
+    <div id="moveT" name="moveT">
+      <input type="text" id="y1_out" name="y1_out" required minlength="1" maxlength="3" size="4">
+    </div>
+
+    <div id="moveTitle" name="moveTitle">
+      <label for="z1">Left Arm: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-45" max="45" step=".01" value="0" id="z1_vert" name="z1_vert" >
+    </div>
+    
+    <div id="moveT" name="moveT">
+      <input type="text" id="z1_out" name="z1_out" required minlength="1" maxlength="3" size="4" >
+    </div>
+  </div>
+    
+  <div class="group2">
+    <div id="moveTitle" name="moveTitle">
+      <label for="x2">Right Lower Arm: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-45" max="45" step=".01" value="0" id="x2_vert" name="x2_vert" ">
+    </div>
+    
+    <div id="moveX" name="moveX">
+      <input type="text" id="x2_out" name="x2_out" required minlength="1" maxlength="3" size="4" >
+    </div>
+    
+    <div id="moveTitle" name="moveTitle">
+      <label for="y2">Left Lower Arm: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-45" max="45" step=".01" value="0" id="y2_vert" name="y2_vert"> 
+    </div>
+    
+    <div id="moveT" name="moveT">
+      <input type="text" id="y2_out" name="y2_out" required minlength="1" maxlength="3" size="4">
+    </div>
+    
+    <div id="moveTitle" name="moveTitle">
+      <label for="z2">Head: </label>
+    </div>
+    
+    <div id="moveS" name="moveS">
+      <input type="range" min="-45" max="45" step=".01" value="0" id="z2_vert" name="z2_vert" >
+    </div>
+    
+    <div id="moveT" name="moveT">
+      <input type="text" id="z2_out" name="z2_out" required minlength="1" maxlength="3" size="4" >
+    </div>
+   </div>
+    
+  </div>
+
+  <script src="gl-matrix.js"></script>
+  <script src="robot.js"></script>
+</body>
+</html>
